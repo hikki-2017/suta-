@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>NOVA SURVIVE</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Rajdhani フォント - CDN直読み（オフライン時はシステムフォント）*/
+    @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&display=swap');
+  </style>
+</head>
+<body>
+
+<div id="gameWrapper">
+  <!-- ゲームキャンバス -->
+  <canvas id="gameCanvas" width="400" height="700"></canvas>
+
+  <!-- ===== タイトル画面 ===== -->
+  <div id="titleScreen" class="overlay" style="display:flex;">
+    <div class="title-decoration"></div>
+    <div class="title-logo">
+      <h1>NOVA</h1>
+      <h1 style="color:#aa44ff; text-shadow: 0 0 20px #aa44ff, 0 0 40px rgba(170,68,255,0.4);">SURVIVE</h1>
+      <p class="subtitle">Endless Bullet Hell Survivor</p>
+    </div>
+
+    <div class="title-coins" id="totalCoinsDisplay">💰 0</div>
+
+    <div class="title-btn-area">
+      <button class="btn-primary" id="btnStart">▶ PLAY</button>
+      <button class="btn-secondary" id="btnShop">🛒 強化ショップ</button>
+      <button class="btn-ad" id="btnAdStart">📺 広告を見てレア武器獲得</button>
+    </div>
+
+    <p class="title-version">v1.0.0 MVP</p>
+  </div>
+
+  <!-- ===== ゲームオーバー画面 ===== -->
+  <div id="gameOverScreen" class="overlay" style="display:none;">
+    <div class="result-title go-title">GAME OVER</div>
+
+    <div class="result-stats">
+      <div class="stat-card">
+        <div class="stat-label">LEVEL</div>
+        <div class="stat-value" id="goLevel">1</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">COINS</div>
+        <div class="stat-value" style="color:#ffcc00;" id="goCoins">0</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">EXP</div>
+        <div class="stat-value" style="color:#88ff44;" id="goExp">0</div>
+      </div>
+    </div>
+
+    <div class="result-btn-area">
+      <button class="btn-ad" id="btnRevive">📺 広告を見て復活</button>
+      <button class="btn-danger" id="btnRetry">🔁 リトライ</button>
+      <button class="btn-secondary" id="btnGoHome">🏠 タイトルへ</button>
+    </div>
+  </div>
+
+  <!-- ===== クリア画面 ===== -->
+  <div id="clearScreen" class="overlay" style="display:none;">
+    <div class="result-title clear-title">STAGE CLEAR!</div>
+
+    <div class="result-stats">
+      <div class="stat-card">
+        <div class="stat-label">LEVEL</div>
+        <div class="stat-value" id="clLevel">1</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">COINS</div>
+        <div class="stat-value" style="color:#ffcc00;" id="clCoins">0</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">EXP</div>
+        <div class="stat-value" style="color:#88ff44;" id="clExp">0</div>
+      </div>
+    </div>
+
+    <div class="result-btn-area">
+      <button class="btn-ad" id="btnClearAd">📺 広告でコイン3倍</button>
+      <button class="btn-primary" id="btnClearRetry">🔁 もう一度</button>
+      <button class="btn-secondary" id="btnClearHome">🏠 タイトルへ</button>
+    </div>
+  </div>
+
+  <!-- ===== ショップ画面 ===== -->
+  <div id="shopScreen" class="overlay" style="display:none;">
+    <div class="shop-header">
+      <h2>⚙ 強化ショップ</h2>
+      <span id="shopCoins">💰 0</span>
+    </div>
+    <div id="shopItems"></div>
+    <div style="margin-top:16px; padding-bottom:8px;">
+      <button class="btn-secondary" id="btnShopClose" style="width:100%;">← 戻る</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== JS読み込み ===== -->
+<script src="js/config.js"></script>
+<script src="js/ad-manager.js"></script>
+<script src="js/particles.js"></script>
+<script src="js/player.js"></script>
+<script src="js/enemy.js"></script>
+<script src="js/weapon.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/shop.js"></script>
+<script src="js/main.js"></script>
+
+</body>
+</html>
